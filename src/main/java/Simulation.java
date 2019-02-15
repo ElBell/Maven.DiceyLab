@@ -23,13 +23,25 @@ public class Simulation {
         }
     }
 
+    public String printStars(float percentage) {
+        int numberStars = (int) Math.floor(percentage * 100);
+        String stars = "";
+        for (int i = 0; i < numberStars; i++) {
+            stars += "*";
+        }
+        return stars;
+    }
+
     public void printResults() {
-        String results = "***\nSimulation of " + numberOfDies + " dice tossed for " + numberOfTosses + " times.\n***\n\n";
+        String results = "***\nSimulation of " + numberOfDies + " dice tossed " + numberOfTosses + " times.\n***\n\n";
 
         for (int i = lowest; i <= highest; i++) {
-            results += String.format("%3d : %7d : %3.2f %n", i, bins.getBins(i), bins.percentage(i, bins.total()));
+            float percentage = bins.percentage(i, bins.total());
+            results += String.format("%3d : %5d : %3.2f %s %n", i, bins.getBins(i), percentage, printStars(percentage));
             //results += i + " : " + bins.getBins(i) + " : " + bins.percentage(i, bins.total())+ "\n";
         }
+
+        results += "\n Happy Gaming!!\n";
 
         System.out.print(results);
     }
