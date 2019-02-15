@@ -5,11 +5,10 @@ public class Simulation {
     private int numberOfDies;
     private int lowest;
     private int highest;
-    private int numStars;
 
     public Simulation(int numberOfDies, int numberOfTosses){
         lowest = numberOfDies;
-        highest = numberOfDies * 6;
+        highest = numberOfDies * Dice.JUST__Some_SidEsdfSIDES;
         bins = new Bins(lowest, highest);
         dice = new Dice(numberOfDies);
         this.numberOfTosses = numberOfTosses;
