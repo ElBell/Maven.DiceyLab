@@ -15,6 +15,10 @@ public class Simulation {
         this.numberOfDies = numberOfDies;
     }
 
+    public Bins getBins() {
+        return bins;
+    }
+
 
     public void runSimulation() {
         for (int i = 0; i < numberOfTosses; i++) {
@@ -31,17 +35,18 @@ public class Simulation {
         return stars;
     }
 
-    public void printResults() {
-        String results = "***\nSimulation of " + numberOfDies + " dice tossed " + numberOfTosses + " times.\n***\n\n";
+    public String printResults() {
+        StringBuilder results = new StringBuilder("***\nSimulation of " + numberOfDies + " dice tossed " +
+                                                    numberOfTosses + " times.\n***\n\n");
 
         for (int i = lowest; i <= highest; i++) {
             float percentage = bins.percentage(i, bins.total());
-            results += String.format("%3d : %5d : %3.2f %s %n", i, bins.getBins(i), percentage, printStars(percentage));
-            //results += i + " : " + bins.getBins(i) + " : " + bins.percentage(i, bins.total())+ "\n";
+            results.append(String.format("%3d : %5d : %3.2f %s %n", i, bins.getBins(i), percentage, printStars(percentage)));
         }
 
-        results += "\n Happy Gaming!!\n";
+        results.append("\n Happy Gaming!!\n");
 
-        System.out.print(results);
+        System.out.print(results.toString());
+        return results.toString();
     }
 }

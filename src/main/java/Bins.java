@@ -2,7 +2,9 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class Bins {
+
     private HashMap<Integer, Integer> bins;
+
     public Bins(int start, int end) {
         bins = new HashMap<Integer, Integer>();
         makeBins(start, end);
